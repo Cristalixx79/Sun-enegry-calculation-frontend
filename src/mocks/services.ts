@@ -1,17 +1,10 @@
 import type { Service } from '../types';
 
-import panelMono from '../assets/mock/panel-mono.jpg';
-import panelPoly from '../assets/mock/panel-poly.jpg';
-import panelHjt from '../assets/mock/panel-hjt.jpg';
-import panelBifacial from '../assets/mock/panel-bifacial.jpg';
-import videoSunrise from '../assets/mock/video-sunrise.mp4';
-import videoGreen from '../assets/mock/video-green.mp4';
+import photo1 from '../assets/photos/photo-1.jpg';
+import photo2 from '../assets/photos/photo-2.jpg';
+import photo4 from '../assets/photos/photo-4.jpg';
+import photo6 from '../assets/photos/photo-6.jpg';
 
-/**
- * Mock-коллекция услуг: в этой лабораторной данные берутся только отсюда,
- * без обращения к бэкенду. У части услуг image_url / video_url пустые —
- * для них показываются изображение и видео по умолчанию (см. utils/media.ts).
- */
 export const MOCK_SERVICES: Service[] = [
   {
     id: 1,
@@ -21,8 +14,8 @@ export const MOCK_SERVICES: Service[] = [
     status: 'published',
     kpd: 21,
     price: 5400,
-    image_url: panelMono,
-    video_url: videoSunrise,
+    image_url: photo1,
+    video_url: null,
     creator_id: 1,
     is_own: 0,
     likes_count: 128,
@@ -37,7 +30,7 @@ export const MOCK_SERVICES: Service[] = [
     status: 'published',
     kpd: 16,
     price: 3200,
-    image_url: panelPoly,
+    image_url: photo2,
     video_url: null,
     creator_id: 2,
     is_own: 0,
@@ -69,8 +62,8 @@ export const MOCK_SERVICES: Service[] = [
     status: 'published',
     kpd: 23,
     price: 6900,
-    image_url: panelHjt,
-    video_url: videoGreen,
+    image_url: photo4,
+    video_url: null,
     creator_id: 3,
     is_own: 0,
     likes_count: 96,
@@ -101,7 +94,7 @@ export const MOCK_SERVICES: Service[] = [
     status: 'published',
     kpd: 22,
     price: 6100,
-    image_url: panelBifacial,
+    image_url: photo6,
     video_url: null,
     creator_id: 1,
     is_own: 0,

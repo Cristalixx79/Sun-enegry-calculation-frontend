@@ -10,7 +10,6 @@ interface ServiceCardProps {
   service: Service;
 }
 
-/** Карточка услуги на странице «Плитка». Клик открывает услугу в ленте. */
 export default function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link to={`/feed/${service.id}`} className="grid-card-link">

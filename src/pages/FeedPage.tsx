@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
+import BackgroundVideo from '../components/BackgroundVideo';
 import Icon from '../components/Icon';
 import { ICON_ARROW, ICON_BOLT, ICON_CUBE, ICON_HEART } from '../components/icons';
 import { PUBLISHED_SERVICES } from '../mocks/services';
@@ -8,7 +9,6 @@ import type { Service } from '../types';
 import { formatKpd, formatPrice } from '../utils/format';
 import { resolveImage, resolveVideo } from '../utils/media';
 
-/** Сколько символов описания показывается до нажатия «Ещё» */
 const DESCRIPTION_LIMIT = 80;
 
 interface FeedViewProps {
@@ -18,17 +18,9 @@ interface FeedViewProps {
 
 function FeedView({ service, onNext }: FeedViewProps) {
   const [expanded, setExpanded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
+  const image = resolveImage(service.image_url);
   const video = resolveVideo(service.video_url);
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (el) {
-      el.muted = true;
-      el.play().catch(() => undefined);
-    }
-  }, [video]);
 
   const description = service.description;
   const isLong = description.length > DESCRIPTION_LIMIT;
@@ -37,18 +29,7 @@ function FeedView({ service, onNext }: FeedViewProps) {
 
   return (
     <div className="feed">
-      <div className="video-container">
-        <video
-          ref={videoRef}
-          key={video}
-          src={video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        />
-      </div>
+      <BackgroundVideo src={video} poster={image} />
 
       <div className="content-overlay">
         <div className="icon-stack">
@@ -100,12 +81,10 @@ export default function FeedPage() {
     );
   }
 
-  // Если id не указан или такой услуги нет — показываем первую
   const foundIndex = PUBLISHED_SERVICES.findIndex((s) => String(s.id) === id);
   const index = foundIndex === -1 ? 0 : foundIndex;
   const service = PUBLISHED_SERVICES[index];
   const next = PUBLISHED_SERVICES[(index + 1) % PUBLISHED_SERVICES.length];
 
-  // key сбрасывает локальное состояние (раскрытое описание) при смене услуги
   return <FeedView key={service.id} service={service} onNext={() => navigate(`/feed/${next.id}`)} />;
 }
