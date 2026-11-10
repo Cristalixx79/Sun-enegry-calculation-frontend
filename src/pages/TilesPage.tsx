@@ -9,9 +9,7 @@ import { DEFAULT_KPD, filterByKpd, MAX_KPD } from '../utils/filter';
 export default function TilesPage() {
   const [kpdMax, setKpdMax] = useState<number>(DEFAULT_KPD);
   const [appliedKpd, setAppliedKpd] = useState<number>(DEFAULT_KPD);
-
   const cards = useMemo(() => filterByKpd(PUBLISHED_SERVICES, appliedKpd), [appliedKpd]);
-
   return (
     <>
       <header className="page-header">
@@ -23,7 +21,6 @@ export default function TilesPage() {
           onSubmit={() => setAppliedKpd(kpdMax)}
         />
       </header>
-
       <main className="grid-scroll">
         {cards.length === 0 ? (
           <div className="empty-state">
