@@ -1,17 +1,8 @@
-export type ServiceStatus = 'draft' | 'published' | 'deleted';
-
-export interface Service {
+/** Данные пользователя, которые возвращает метод входа и хранит Redux */
+export interface UserInfo {
   id: number;
-  title: string;
-  description: string;
-  status: ServiceStatus;
-  kpd: number | null;
-  price: number | null;
-  image_url: string | null;
-  video_url: string | null;
-  creator_id: number;
-  is_own: 0 | 1;
-  likes_count: number;
-  created_at: string;
-  updated_at: string;
+  username: string;
 }
+
+/** Откуда получены данные: из веб-сервиса или из mock-коллекции */
+export type DataSource = 'api' | 'mock';

@@ -1,11 +1,22 @@
-import type { Service } from '../types';
+import type { ServiceOut } from '../api';
 
+// Фото услуг: src/assets/photos/photo-<id>.jpg (замените файлы своими, см. README)
 import photo1 from '../assets/photos/photo-1.jpg';
 import photo2 from '../assets/photos/photo-2.jpg';
 import photo4 from '../assets/photos/photo-4.jpg';
 import photo6 from '../assets/photos/photo-6.jpg';
 
-export const MOCK_SERVICES: Service[] = [
+// Видео для отдельных услуг (необязательно): положите файл в src/assets/videos/,
+// импортируйте его здесь и укажите в поле video_url нужной услуги, например:
+// import video1 from '../assets/videos/video-1.mp4';
+
+/**
+ * Mock-коллекция услуг: в этой лабораторной данные берутся только отсюда,
+ * без обращения к бэкенду. У части услуг image_url пустой, а video_url пустой
+ * у всех — для них показываются изображение и видео по умолчанию
+ * (см. utils/media.ts).
+ */
+export const MOCK_SERVICES: ServiceOut[] = [
   {
     id: 1,
     title: 'Монокристаллическая панель X1',
@@ -137,4 +148,4 @@ export const MOCK_SERVICES: Service[] = [
 ];
 
 /** Гость видит только опубликованные услуги */
-export const PUBLISHED_SERVICES: Service[] = MOCK_SERVICES.filter((s) => s.status === 'published');
+export const PUBLISHED_SERVICES: ServiceOut[] = MOCK_SERVICES.filter((s) => s.status === 'published');

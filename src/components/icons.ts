@@ -1,3 +1,4 @@
+// SVG-пути иконок (те же, что использовались в разметке из лабораторной №1)
 export const ICON_LIST = 'M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z';
 export const ICON_PLUS = 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z';
 export const ICON_GRID = 'M3 3h8v8H3zm0 10h8v8H3zM13 3h8v8h-8zm0 10h8v8h-8z';
@@ -9,3 +10,5 @@ export const ICON_ARROW = 'M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z';
 export const ICON_BOLT = 'M13 2L3 14h7l-1 8 10-12h-7l1-8z';
 export const ICON_CUBE =
   'M12 1l-9 4.5v13L12 23l9-4.5v-13L12 1zm0 2.18l6.9 3.45L12 10.09 5.1 6.63 12 3.18zM5 8.34l6 3v8.32l-6-3V8.34zm8 11.32v-8.32l6-3v8.32l-6 3z';
+export const ICON_LOGOUT =
+  'M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z';
