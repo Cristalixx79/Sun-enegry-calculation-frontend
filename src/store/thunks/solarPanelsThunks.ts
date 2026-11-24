@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ServicesService } from '../../api';
 import type { LikeOut, ServiceListItem, ServiceOut, ServicePublishIn } from '../../api';
+import { MOCK_ONLY } from '../../config';
 import { mockFeed, mockListItems } from '../../mocks/mockApi';
 import type { DataSource } from '../../types';
 import { getErrorMessage, isBackendUnavailable } from '../../utils/errors';
@@ -10,7 +11,8 @@ import { getErrorMessage, isBackendUnavailable } from '../../utils/errors';
  * сгенерированный клиент (src/api, ServicesService), thunk-и называются по теме.
  *
  * Для гостя при недоступном бэкенде данные берутся из mock-коллекции
- * (аргумент allowMock = true только у гостя).
+ * (аргумент allowMock = true только у гостя). В режиме MOCK_ONLY (GitHub Pages)
+ * запросов к бэкенду нет вообще.
  */
 
 type ThunkConfig = { rejectValue: string };
@@ -21,6 +23,7 @@ export const fetchSolarPanels = createAsyncThunk<
   { kpdMax: number; allowMock: boolean },
   ThunkConfig
 >('solarPanels/fetchAll', async ({ kpdMax, allowMock }, { rejectWithValue }) => {
+  if (MOCK_ONLY) return { items: mockListItems(kpdMax), source: 'mock' };
   try {
     const items = await ServicesService.listServicesApiServicesGet(kpdMax);
     return { items, source: 'api' };
@@ -38,6 +41,7 @@ export const fetchSolarPanelFeed = createAsyncThunk<
   { id?: number; next?: boolean; allowMock: boolean },
   ThunkConfig
 >('solarPanels/fetchFeed', async ({ id, next = false, allowMock }, { rejectWithValue }) => {
+  if (MOCK_ONLY) return { feed: mockFeed(id, next), source: 'mock' };
   try {
     const feed =
       id === undefined

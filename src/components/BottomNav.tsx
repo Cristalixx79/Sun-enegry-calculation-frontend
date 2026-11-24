@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Nav, Navbar, Spinner } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logoutRequest } from '../auth/authApi';
+import { MOCK_ONLY } from '../config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { logout } from '../store/slices/authSlice';
 import Icon from './Icon';
@@ -67,6 +68,11 @@ export default function BottomNav() {
           >
             {loggingOut ? <Spinner animation="border" size="sm" /> : <Icon path={ICON_LOGOUT} />}
             <span>Выход</span>
+          </Nav.Link>
+        ) : MOCK_ONLY ? (
+          <Nav.Link disabled className="bottom-nav__item" title="Недоступно в демо-версии">
+            <Icon path={ICON_USER} />
+            <span>Вход</span>
           </Nav.Link>
         ) : (
           <Nav.Link as={NavLink} to="/login" className="bottom-nav__item">

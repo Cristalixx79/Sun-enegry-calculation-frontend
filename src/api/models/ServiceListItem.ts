@@ -1,7 +1,3 @@
-/* generated using openapi-typescript-codegen -- do not edit */
-/* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 /**
  * Элемент списка/плитки — только опубликованные услуги.
  */
@@ -18,4 +14,3 @@ export type ServiceListItem = {
      */
     is_own: number;
 };
-

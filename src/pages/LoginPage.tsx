@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Alert, Button, Form, Spinner } from 'react-bootstrap';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { authErrorMessage, loginRequest } from '../auth/authApi';
+import { MOCK_ONLY } from '../config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setUser } from '../store/slices/authSlice';
 
@@ -20,8 +21,8 @@ export default function LoginPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Уже вошедшему пользователю страница входа не нужна
-  if (isAuthenticated) return <Navigate to="/feed" replace />;
+  // Уже вошедшему пользователю (и в демо-версии без бэкенда) страница входа не нужна
+  if (isAuthenticated || MOCK_ONLY) return <Navigate to="/feed" replace />;
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();

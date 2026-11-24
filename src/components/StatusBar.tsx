@@ -1,4 +1,5 @@
 import { Alert, Badge } from 'react-bootstrap';
+import { MOCK_ONLY } from '../config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { clearError } from '../store/slices/solarPanelsSlice';
 
@@ -15,7 +16,7 @@ export default function StatusBar() {
     <>
       {source === 'mock' && (
         <Badge bg="warning" text="dark" className="source-badge">
-          Демо-данные: бэкенд недоступен
+          {MOCK_ONLY ? 'Демо-версия: данные из mock' : 'Демо-данные: бэкенд недоступен'}
         </Badge>
       )}
       {error && (

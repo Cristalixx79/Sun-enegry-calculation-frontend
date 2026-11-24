@@ -1,7 +1,3 @@
-/* generated using openapi-typescript-codegen -- do not edit */
-/* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 /**
  * Полное представление услуги (лента, черновик, результат создания/публикации).
  */
@@ -20,4 +16,3 @@ export type ServiceOut = {
     created_at: string;
     updated_at: string;
 };
-

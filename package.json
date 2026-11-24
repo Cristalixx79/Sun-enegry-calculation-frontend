@@ -1,18 +1,20 @@
 {
   "name": "vibes-frontend",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "generate-api": "openapi --input http://127.0.0.1:8000/openapi.json --output ./src/api --client axios"
+    "generate-api": "openapi --input http://127.0.0.1:8000/openapi.json --output ./src/api --client axios",
+    "build:pages": "tsc && vite build --mode pages"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
@@ -20,11 +22,13 @@
     "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
+    "@types/node": "^22.5.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "openapi-typescript-codegen": "^0.29.0",
     "typescript": "^5.5.4",
-    "vite": "^5.4.3"
+    "vite": "^5.4.3",
+    "vite-plugin-pwa": "^0.20.5"
   }
 }

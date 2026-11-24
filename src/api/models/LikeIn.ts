@@ -1,9 +1,5 @@
-/* generated using openapi-typescript-codegen -- do not edit */
-/* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 /**
- * Тело запроса POST /api/services/{id}/like.
+ * Тело запроса POST /api/solar_panel_services/{id}/like.
  */
 export type LikeIn = {
     /**
@@ -11,4 +7,3 @@ export type LikeIn = {
      */
     value: number;
 };
-
